@@ -64,7 +64,8 @@ module "aws_database_subnet_group" {
 
   name = var.rds_instance_identifier
   subnet_ids = [
-    data.aws_subnet.selected_a.id
+    data.aws_subnet.selected_a.id,
+    data.aws_subnet.selected_b.id
   ]
   tags = merge(var.rds_tags, {
     Name = "${var.rds_instance_identifier}"
@@ -101,11 +102,11 @@ module "aws_security_group" {
 ################################################
 
 module "aws_secrets_manager" {
-  source        = "git::git@github.com:team-tech-challenge/terraform-modules-remotes.git//aws_secret_manager?ref=main"
-  secret_name   = "${var.rds_instance_identifier}-secret"
+  source             = "git::git@github.com:team-tech-challenge/terraform-modules-remotes.git//aws_secret_manager?ref=main"
+  secret_name        = var.rds_instance_identifier
   secret_description = "Secret for ${var.rds_instance_identifier} database instances"
   tags = merge(var.rds_tags, {
-    Name = "${var.rds_instance_identifier}.secret"
+    Name = "${var.rds_instance_identifier}"
   })
   create_secret = var.create_aws_rds
 

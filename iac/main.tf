@@ -11,7 +11,7 @@ module "aws_rds_instance_postgresql" {
   rds_storage_encrypted       = true
   rds_multi_az                = false
   rds_publicly_accessible     = false
-  rds_deletion_protection     = true
+  rds_deletion_protection     = false
   rds_skip_final_snapshot     = true
   rds_db_name                 = "tech_challenge"
   rds_db_username             = "tech_challenge"
