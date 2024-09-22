@@ -5,7 +5,7 @@
 ################################################
 
 module "aws_rds_instance" {
-  source = "git::git@github.com:team-tech-challenge/terraform-modules-remotes.git//aws_databases?ref=main"
+  source = "git::https://github.com/team-tech-challenge/terraform-modules-remotes.git//aws_databases?ref=main"
 
   create_db_instance = var.create_aws_rds
 
@@ -40,7 +40,7 @@ module "aws_rds_instance" {
 ################################################
 
 module "aws_db_parameter_group" {
-  source = "git::git@github.com:team-tech-challenge/terraform-modules-remotes.git//aws_db_parameter_group?ref=main"
+  source = "git::https://github.com/team-tech-challenge/terraform-modules-remotes.git//aws_db_parameter_group?ref=main"
 
   create_db_parameter_group = var.create_aws_rds
   name                      = var.rds_instance_identifier
@@ -58,7 +58,7 @@ module "aws_db_parameter_group" {
 ################################################
 
 module "aws_database_subnet_group" {
-  source = "git::git@github.com:team-tech-challenge/terraform-modules-remotes.git//aws_database_subnet_group?ref=main"
+  source = "git::https://github.com/team-tech-challenge/terraform-modules-remotes.git//aws_database_subnet_group?ref=main"
 
   create_db_subnet_group = var.create_aws_rds
 
@@ -79,7 +79,7 @@ module "aws_database_subnet_group" {
 ################################################
 
 module "aws_security_group" {
-  source = "git::git@github.com:team-tech-challenge/terraform-modules-remotes.git//aws_security_group?ref=main"
+  source = "git::https://github.com/team-tech-challenge/terraform-modules-remotes.git//aws_security_group?ref=main"
 
   create_security_group = var.create_aws_rds
 
@@ -102,7 +102,7 @@ module "aws_security_group" {
 ################################################
 
 module "aws_secrets_manager" {
-  source             = "git::git@github.com:team-tech-challenge/terraform-modules-remotes.git//aws_secret_manager?ref=main"
+  source             = "git::https://github.com/team-tech-challenge/terraform-modules-remotes.git//aws_secret_manager?ref=main"
   secret_name        = var.rds_instance_identifier
   secret_description = "Secret for ${var.rds_instance_identifier} database instances"
   tags = merge(var.rds_tags, {
@@ -120,7 +120,7 @@ module "aws_secrets_manager" {
 ################################################
 
 module "aws_secret_manager_version" {
-  source                = "git::git@github.com:team-tech-challenge/terraform-modules-remotes.git//aws_secret_manager_version?ref=main"
+  source                = "git::https://github.com/team-tech-challenge/terraform-modules-remotes.git//aws_secret_manager_version?ref=main"
   secret_id             = module.aws_secrets_manager.secret_manager_id
   create_secret_version = var.create_aws_rds
 
