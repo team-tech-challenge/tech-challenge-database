@@ -10,7 +10,7 @@ module "aws_rds_instance_postgresql" {
   rds_storage_type            = "gp2"
   rds_storage_encrypted       = true
   rds_multi_az                = false
-  rds_publicly_accessible     = false
+  rds_publicly_accessible     = true
   rds_deletion_protection     = false
   rds_skip_final_snapshot     = true
   rds_db_name                 = "tech_challenge"

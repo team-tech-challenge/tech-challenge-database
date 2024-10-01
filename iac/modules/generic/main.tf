@@ -103,7 +103,7 @@ module "aws_security_group" {
 
 module "aws_secrets_manager" {
   source             = "git::https://github.com/team-tech-challenge/terraform-modules-remotes.git//aws_secret_manager?ref=main"
-  secret_name        = var.rds_instance_identifier
+  secret_name        = "rds-secrets-${var.rds_instance_identifier}"
   secret_description = "Secret for ${var.rds_instance_identifier} database instances"
   tags = merge(var.rds_tags, {
     Name = "${var.rds_instance_identifier}"
