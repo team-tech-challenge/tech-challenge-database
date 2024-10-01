@@ -36,13 +36,13 @@ locals {
 
 locals {
   vpc_ids = {
-    production = "vpc-06ffcf4d1928b99ce"
+    production = "vpc-027408f2a7c860aaa"
   }
 
   subnet_ids = {
     production = {
-      us_east_1a = "subnet-0f2cf992d3803ccb4"
-      us_east_1b = "subnet-09d44f88ebbfa4859"
+      us_east_1a = "subnet-08cdd72cd6269e39d"
+      us_east_1b = "subnet-07bb8f46a3e01784c"
     }
   }
   selected_vpc_id  = local.vpc_ids[var.workspace_environment]
